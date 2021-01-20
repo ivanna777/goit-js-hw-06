@@ -70,17 +70,40 @@ const getUserNames = users => {
       .map(user => user.name);
 
       return usersWithFriends;
-
-
-
-
-    // const usersWithFriend = users
-    // .filter(user => user.friends === friendName)
-    // .map(user => user.name);
-    // return usersWithFriend;
   };
   
-  console.log(getUsersWithFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sheree Anthony' ]
-  console.log(getUsersWithFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony' ]
+  console.log(getUsersWithFriend(users, 'Briana Decker'));
+  console.log(getUsersWithFriend(users, 'Goldie Gentry')); 
+
+
+  // 9.
+
+  const getNamesSortedByFriendsCount = users => {
+    const sortedName = users
+    .sort((a, b) => a.friends.length - b.friends.length)
+    .map(user => user.name);
+    return sortedName;
+  };
+  
+  console.log(getNamesSortedByFriendsCount(users));
+  
+  //10. 
+
+  const getSortedUniqueSkills = users => {
+    return users
+    .reduce((allSkills, user) => {
+      const skills = user.skills.filter(skill => !allSkills.includes(skill));
+
+      return [...allSkills, ...skills];
+    }, [])
+    .sort();
+  };
+  
+  console.log(getSortedUniqueSkills(users));
+  // [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
+
+
+  
+
 
 
